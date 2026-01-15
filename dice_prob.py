@@ -106,7 +106,7 @@ def main():
     print(f"Number of ways to get sum {target_sum}: {ways:,}")
     print(f"Total possible outcomes: {total_outcomes:,}")
     print(f"Exact probability: {exact_prob:.10f}")
-    print(f"Exact probability: {exact_prob * 100:.8f}%")
+    print(f"Exact probability(%): {exact_prob * 100:.8f}%")
     print()
     
     # Part 2: Simulation
@@ -116,7 +116,7 @@ def main():
     successes, trials, sim_prob = simulate_dice_throws(num_dice, target_sum, num_trials)
     print(f"Successful trials (sum = {target_sum}): {successes}/{trials}")
     print(f"Estimated probability: {sim_prob:.10f}")
-    print(f"Estimated probability: {sim_prob * 100:.8f}%")
+    print(f"Estimated probability(%): {sim_prob * 100:.8f}%")
     print()
     
     # Comparison
