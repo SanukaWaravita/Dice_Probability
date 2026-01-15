@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-def calculate_exact_probability(num_dice=2, target_sum=7):
+def calculate_exact_probability(num_dice=10, target_sum=32):
     # Step 3.1: Initialize our DP table
     # dp[s] = number of ways to achieve sum 's'
     max_sum = num_dice * 6  # Maximum possible sum (all 6s)
@@ -18,32 +18,16 @@ def calculate_exact_probability(num_dice=2, target_sum=7):
     
     # Step 3.2: Add dice one by one
     for die_num in range(1, num_dice + 1):
-        
-        print(f"Iteration: Number of die = {die_num}")
-        
         current_dp = [0] * (max_sum + 1)
         
         # For each possible sum
         for total in range(die_num, max_sum + 1):
-        
-            print(f"          Iteration: total = {total}")
-        
             # Try each face of the die (1 through 6)
             for face in range(1, 7):
-                
-                print(f"                    Iteration: face = {face}")
-
                 if total - face >= 0:
                     current_dp[total] += prev_dp[total - face]
-                else:
-                    print(f"                    Skipping face {face} for total {total} as total - face < 0")
-        
-        print(f"{current_dp}")
         
         prev_dp = current_dp
-
-        print(f"Updated prev_dp: {prev_dp}")
-        
         print(f"  Processed die {die_num}/{num_dice}")
     
     # Step 3.3: Calculate final probability
